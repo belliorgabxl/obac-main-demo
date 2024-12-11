@@ -14,7 +14,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      
       <body><TeacherSidebar
           menuItems={TeacherSideBarData.menuItems}
           profileData={ProfileData}
