@@ -9,7 +9,7 @@ export default function Home() {
     router.push("/pages/home");
   };
   return (
-    <div className="py-5 px-5">
+    <div className="py-5 px-1 lg:px-5">
       <div className="grid place-items-center w-full ">
         <div className="py-10 px-20 w-full grid place-items-center rounded-lg border-dashed text-2xl border-2 border-gray-500">
           พื้นที่โฆษณา
@@ -21,7 +21,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="border-[1px] my-5 border-gray-200 w-full rounded-md shadow-sm shadow-gray-200 px-12">
+      <div className="border-[1px] my-5 border-gray-200 w-full rounded-md shadow-sm shadow-gray-200 lg:px-12 px-2">
         <div className="px-8 text-xl py-2 mt-4 gap-2 flex bg-slate-100 w-fit rounded-md">
           {" "}
           <UserRound
