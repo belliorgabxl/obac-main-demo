@@ -16,7 +16,7 @@ export default function Home() {
         </div>
       </div>
       <div className="w-full mt-4 grid place-items-center">
-        <div className="px-10 py-3 rounded-md text-2xl bg-slate-200">
+        <div className="lg:px-10 px-2 py-3 rounded-md text-2xl bg-slate-200">
           แบบฟอร์มสมัครเข้าศึกษา
         </div>
       </div>
