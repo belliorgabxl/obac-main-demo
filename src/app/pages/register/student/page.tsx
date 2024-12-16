@@ -278,7 +278,7 @@ export default function Home() {
           <div className="overflow-hidden">
             <div>ที่อยู่ :</div>
             <textarea
-              className="border-2 ml-2 w-[350px] focus:outline-blue-400 py-1 border-slate-200 px-3 rounded-md"
+              className="border-2 ml-2 w-full lg:w-[350px] focus:outline-blue-400 py-1 border-slate-200 px-3 rounded-md"
               rows={2}
               placeholder="บ้านเลขที่..."
             />
@@ -330,7 +330,7 @@ export default function Home() {
           <div className="overflow-hidden">
             <div>ที่อยู่ :</div>
             <textarea
-              className="border-2 ml-2 w-[350px] focus:outline-blue-400 py-1 border-slate-200 px-3 rounded-md"
+              className="border-2 ml-2 w-full lg:w-[350px] focus:outline-blue-400 py-1 border-slate-200 px-3 rounded-md"
               rows={2}
               placeholder="บ้านเลขที่..."
             />
