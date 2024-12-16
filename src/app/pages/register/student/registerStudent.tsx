@@ -1,227 +1,349 @@
 "use client";
-
-import { LabelInput } from "@/app/components/input/input";
-import { Badge } from "@/components/ui/badge";
-import { StudentCreateData } from "@/dto/studentDto";
-import { useState } from "react";
-import { Combobox } from "@/app/components/combobox/combobox";
-import { fetchCreateStudentAsync } from "@/api/student/studentApi";
+import { MapPinHouse, Phone, UserRound, UsersRound } from "lucide-react";
 import { useRouter } from "next/navigation";
-export function RegisterStudent() {
+
+export default function Home() {
   const router = useRouter();
-  const [createStudentData, setCreateStudentData] = useState<StudentCreateData>(
-    {
-      userName: "",
-      password: "",
-      firstName: "",
-      lastName: "",
-      thaiName: "",
-      thaiLastName: "",
-      gender: "",
-      studentGroupId: 0,
-      studentCode: "",
-      thaiId: "",
-      email: "",
-      phoneNumber: "",
-      address: "",
-      nationality: "",
-      religion: "",
-      class: "",
-      enrollYear: 0,
-      currentYear: 0,
-      graduateYear: 0,
-      currentRoom: "",
-      programId: 0,
-      facultyId: 0,
-      birthDate: new Date(),
-    }
-  );
-
-  // fetchCreate Student
-  const handelSubmit = async () => {
-    await fetchCreateStudentAsync(createStudentData);
-    // router.push("/pages/home/");
+  const handleSubmit = () => {
+    alert("ส่งใบสมัครสำเร็จ รอตรวจสอบอีเมล");
+    router.push("/pages/home");
   };
-
-  const [booleanThaiId, setBooleanThaiId] = useState<boolean | null>(null);
-  const validateThaiIdData = (id: string) => {
-    if (!/^\d{13}$/.test(id)) {
-      setBooleanThaiId(false); // รหัสบัตรประชาชนไม่ถูกต้อง
-    } else {
-      setBooleanThaiId(true);
-      handleChange("thaiId", id);
-    }
-  };
-  console.log("Boolean:", booleanThaiId);
-
-  const handleChange = (
-    key: keyof StudentCreateData,
-    value: string | number | Date
-  ) => {
-    setCreateStudentData((prev) => ({
-      ...prev,
-      [key]: value,
-    }));
-  };
-  console.log("Data:", createStudentData);
-  const genderData: string[] = ["Male", "Female"];
   return (
-    <div className="mx-4 sm:mx-10 lg:mx-44 p-4 mt-10 flex-col">
-      <div className="items-center text-center p-4 text-lg sm:text-xl flex flex-col sm:flex-row justify-between">
-        <Badge className="text-sm sm:text-lg" variant="outline">
-          ลงทะเบียนนักเรียน
-        </Badge>
+    <div className="py-5 px-5">
+      <div className="grid place-items-center w-full ">
+        <div className="py-10 px-20 w-full grid place-items-center rounded-lg border-dashed text-2xl border-2 border-gray-500">
+          พื้นที่โฆษณา
+        </div>
       </div>
-      {/* inform */}
-      <div className="flex flex-col gap-6 p-4">
-        <div className="w-1/6">
-          <h1>ข้อมูลทั่วไป</h1>
+      <div className="w-full mt-4 grid place-items-center">
+        <div className="px-10 py-3 rounded-md text-2xl bg-slate-200">
+          แบบฟอร์มสมัครเข้าศึกษา
         </div>
-        <div className="w-full flex">
-          {/* name */}
-          <div className="flex w-1/3">
-            <LabelInput
-              label="Thai Name"
-              type="text"
-              htmlFor="name"
-              onEdit={(name) => handleChange("thaiName", name)}
-            />
-          </div>
+      </div>
 
-          {/* surname */}
-          <div className="flex w-1/3">
-            <LabelInput
-              label="Thai Surname"
-              type="text"
-              htmlFor="surname"
-              onEdit={(surname) => handleChange("thaiLastName", surname)}
-            />
-          </div>
-          {/* gender */}
-          <div className="flex w-1/6">
-            <div className="flex justify-center items-end w-full p-2">
-              <Combobox
-                options={genderData.map((gender) => ({
-                  value: gender,
-                  label: gender,
-                }))}
-                buttonLabel="Select a Gender"
-                onSelect={(selectedGender) =>
-                  handleChange("gender", selectedGender)
-                }
-              />
+      <div className="border-[1px] my-5 border-gray-200 w-full rounded-md shadow-sm shadow-gray-200 px-12">
+        <div className="px-8 text-xl py-2 mt-4 gap-2 flex bg-slate-100 w-fit rounded-md">
+          {" "}
+          <UserRound
+            style={{ width: "1.7rem", height: "1.6rem" }}
+            className="text-black pt-0 "
+          />
+          ประวัติส่วนตัว
+        </div>
+        <div className="lg:flex  grid gap-4 lg:gap-0 my-5">
+          <select className="border-[1px] py-1 w-fit border-slate-200 mr-4 rounded-md px-2">
+            <option selected>คำนำหน้าชื่อ</option>
+            <option>นาย</option>
+            <option>นาง</option>
+            <option>นางสาว</option>
+          </select>
+          <div className="flex">
+            <div className="rounded-l-md  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
+              ชื่อ (ภาษาไทย) :{" "}
             </div>
+            <input
+              type="text"
+              className="line-clamp-1 text-md border-2  border-gray-300 text-gray-700 border-l-0 w-[170px] mr-5 px-4 py-1 bg-white focus:outline-blue-300  rounded-r-md"
+              placeholder="ชื่อ"
+            />
           </div>
-          {/* age */}
-          <div className="flex w-1/6">
-            <LabelInput
-              label="Birth Date"
-              type="date"
-              htmlFor="birthDate"
-              onEdit={(value) => handleChange("birthDate", value)}
+          <div className="flex">
+            <div className="rounded-l-md line-clamp-1  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
+              นามสกุล (ภาษาไทย) :{" "}
+            </div>
+            <input
+              type="text"
+              className=" text-md border-2  border-gray-300 text-gray-700 border-l-0 w-[170px] mr-5 px-4 py-1 bg-white focus:outline-blue-300  rounded-r-md"
+              placeholder="นามสกุล"
             />
           </div>
         </div>
-        <div className="w-full flex">
-          {/* english name */}
-          <div className="flex w-1/3">
-            <LabelInput
-              label="English Name"
+        <div className=" lg:flex md:flex sm:grid sm:gap-4 md:gap-0  grid gap-4  lg:gap-0">
+          <div className="flex">
+            <div className="rounded-l-md  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
+              ชื่อ (อังกฤษ) :{" "}
+            </div>
+            <input
               type="text"
-              htmlFor="firstName"
-              onEdit={(name) => handleChange("firstName", name)}
+              className=" text-md border-2  border-gray-300 text-gray-700 border-l-0 w-[170px] mr-5 px-4 py-1 bg-white focus:outline-blue-300  rounded-r-md"
+              placeholder="Firstname"
             />
           </div>
-
-          {/* english surname */}
-          <div className="flex w-1/3">
-            <LabelInput
-              label="English Surname"
+          <div className="flex">
+            <div className="rounded-l-md  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
+              นามสกุล (อังกฤษ) :{" "}
+            </div>
+            <input
               type="text"
-              htmlFor="lastName"
-              onEdit={(surname) => handleChange("lastName", surname)}
+              className=" text-md border-2  border-gray-300 text-gray-700 border-l-0 w-[170px] mr-5 px-4 py-1 bg-white focus:outline-blue-300  rounded-r-md"
+              placeholder="Lastname"
             />
           </div>
-          <div className="w-1/3">
-            <LabelInput
-              label="รหัสบัตรประชาชน"
-              type="text"
-              htmlFor="thaiId"
-              onEdit={(thaiId) => validateThaiIdData(thaiId)}
+        </div>
+        <div className="lg:flex grid gap-4 my-5">
+          <div className="flex">
+            <div className="rounded-l-md  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
+              บัตรประชาชน :
+            </div>
+            <input
               maxLength={13}
-              isValid={booleanThaiId !== null ? booleanThaiId : true}
-              errorMessage="รหัสบัตรประชาชนไม่ถูกต้อง"
+              className=" text-md border-2  border-gray-300 text-gray-700 border-l-0 w-[180px] mr-5 px-4 py-1 bg-white focus:outline-blue-300  rounded-r-md"
+              placeholder="13 หลัก"
             />
           </div>
-        </div>
-        <div className="w-full flex gap-10">
-          <div className="w-1/4">
-            <LabelInput
-              label="Email"
-              type="email"
-              htmlFor="email"
-              onEdit={(email) => handleChange("email", email)}
+          <div className="flex">
+            <div className="rounded-l-md  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
+              อายุ :{" "}
+            </div>
+            <input
+              type="number"
+              max={50}
+              min={12}
+              className=" text-md border-2  border-gray-300 text-gray-700 border-l-0 w-[80px] mr-5 px-4 py-1 bg-white focus:outline-blue-300  rounded-r-md"
+              placeholder="ปี"
             />
           </div>
-          <div className="w-1/4">
-            <LabelInput
-              label="Phone Number"
-              type="text"
-              htmlFor="phoneNumber"
-              onEdit={(phoneNumber) => handleChange("phoneNumber", phoneNumber)}
-            />
-          </div>
-          <div className="w-1/4">
-            <LabelInput
-              label="Nationality"
-              type="text"
-              htmlFor="nationality"
-              onEdit={(nationality) => handleChange("nationality", nationality)}
-            />
-          </div>
-          <div className="w-1/4">
-            <LabelInput
-              label="Religion"
-              type="text"
-              htmlFor="religion"
-              onEdit={(religion) => handleChange("religion", religion)}
-            />
-          </div>
-        </div>
-        <hr className="mt-4 bg-black" />
+          <div className="flex">
+            <div className="rounded-l-md  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
+              วันเกิด :{" "}
+            </div>
 
-        <div className="w-1/6">
-          <h1>ข้อมูลที่อยู่ตามทะเบียนบ้าน</h1>
+            <input
+              type="date"
+              className=" text-md border-2  border-gray-300 text-gray-600 border-l-0 w-[170px] mr-5 px-4 py-1 bg-white focus:outline-blue-300  rounded-r-md"
+            />
+          </div>
         </div>
-        {/* address */}
-        <div className="mt-4 w-4/6 ml-2">
-          <label
-            htmlFor="Address"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            Address
-          </label>
+
+        <div className="lg:flex grid gap-4 my-5">
+          <select className="border-[2px] py-2 w-fit border-slate-200 mr-4 rounded-md px-2">
+            <option selected>เพศ</option>
+            <option>ชาย</option>
+            <option>หญิง</option>
+            <option>อื่นๆ</option>
+          </select>
+          <div className="flex">
+            <div className="rounded-l-md  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
+              สถานะภาพ :{" "}
+            </div>
+            <input
+              type="text"
+              className=" text-md border-2  border-gray-300 text-gray-700 border-l-0 w-[80px] mr-5 px-4 py-1 bg-white focus:outline-blue-300  rounded-r-md"
+              placeholder="-"
+            />
+          </div>
+          <div className="flex">
+            <div className="rounded-l-md  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
+              ศาสนา :
+            </div>
+            <input
+              maxLength={13}
+              className=" text-md border-2  border-gray-300 text-gray-700 border-l-0 w-[110px] mr-5 px-4 py-1 bg-white focus:outline-blue-300  rounded-r-md"
+              placeholder="-"
+            />
+          </div>
+          <div className="flex">
+            <div className="rounded-l-md  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
+              สัญชาติ :
+            </div>
+            <input
+              maxLength={13}
+              className=" text-md border-2  border-gray-300 text-gray-700 border-l-0 w-[110px] mr-5 px-4 py-1 bg-white focus:outline-blue-300  rounded-r-md"
+              placeholder="-"
+            />
+          </div>
+        </div>
+        <hr className="my-4 border-slate-200" />
+        <div className="px-8 text-xl py-2 bg-slate-100 w-fit rounded-md gap-3 flex">
+          {" "}
+          <MapPinHouse
+            style={{ width: "1.4rem", height: "1.7rem" }}
+            className="text-black pt-1 "
+          />
+          ที่อยู่
+        </div>
+        <div className="my-5 flex">
+          <div>ที่อยู่ :</div>
           <textarea
-            id="Address"
-            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Write your address here..."
-          ></textarea>
+            className="border-2 ml-2 w-[350px] focus:outline-blue-400 py-1 border-slate-200 px-3 rounded-md"
+            rows={2}
+            placeholder="บ้านเลขที่..."
+          />
         </div>
 
-        <hr className="mt-4 bg-black" />
-
-        {/* faculty */}
-
-        {/* programId */}
-
-        <div className="flex justify-end">
-          <button
-            onClick={handelSubmit}
-            className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-          >
-            ส่งรายละเอียดข้อมูล
-          </button>
+        <hr className="my-4 border-slate-200" />
+        <div className="px-8 text-xl py-2 bg-slate-100 w-fit rounded-md gap-3 flex">
+          {" "}
+          <Phone
+            style={{ width: "1.4rem", height: "1.7rem" }}
+            className="text-black pt-1 "
+          />
+          ข้อมูลติดต่อ
         </div>
+        <div className="lg:flex grid gap-4 my-5">
+          <div className="flex">
+            {" "}
+            <div className="rounded-l-md  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
+              เบอร์ติดต่อ :{" "}
+            </div>
+            <input
+              type="text"
+              maxLength={10}
+              className=" text-md border-2  border-gray-300 text-gray-700 border-l-0 w-[150px] mr-5 px-4 py-1 bg-white focus:outline-blue-300  rounded-r-md"
+              placeholder="09X-XXX-XXXX"
+            />
+          </div>
+          <div className="flex">
+            <div className="rounded-l-md  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
+              Email :{" "}
+            </div>
+            <input
+              type="text"
+              className=" text-md border-2  border-gray-300 text-gray-700 border-l-0 w-[160px] mr-5 px-4 py-1 bg-white focus:outline-blue-300  rounded-r-md"
+              placeholder="-"
+            />
+          </div>
+          <div className="flex">
+            <div className="rounded-l-md  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
+              Facebook :{" "}
+            </div>
+            <input
+              type="text"
+              className=" text-md border-2  border-gray-300 text-gray-700 border-l-0 w-[160px] mr-5 px-4 py-1 bg-white focus:outline-blue-300  rounded-r-md"
+              placeholder="-"
+            />
+          </div>
+        </div>
+        <div className="my-5 flex">
+          <div className="rounded-l-md  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
+            Line :{" "}
+          </div>
+          <input
+            type="text"
+            className=" text-md border-2  border-gray-300 text-gray-700 border-l-0 w-[160px] mr-5 px-4 py-1 bg-white focus:outline-blue-300  rounded-r-md"
+            placeholder="@Line"
+          />
+        </div>
+        <hr className="my-4 border-slate-200" />
+        <div className="px-8 text-xl py-2 bg-slate-100 w-fit rounded-md gap-2 flex">
+          <UsersRound
+            style={{ width: "1.4rem", height: "1.7rem" }}
+            className="text-black pt-1 "
+          />
+          ข้อมูลผู้ปกครอง
+        </div>
+        <div className="text-xl mt-5">ข้อมูลบิดา</div>
+        <div className="lg:flex grid gap-4 mt-1 mb-5">
+          <div className="flex">
+            <div className="rounded-l-md  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
+              ชื่อ :{" "}
+            </div>
+            <input
+              type="text"
+              className=" text-md border-2  border-gray-300 text-gray-700 border-l-0 w-[170px] mr-5 px-4 py-1 bg-white focus:outline-blue-300  rounded-r-md"
+              placeholder="ชื่อ"
+            />
+          </div>
+          <div className="flex">
+            <div className="rounded-l-md  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
+              นามสกุล :{" "}
+            </div>
+            <input
+              type="text"
+              className=" text-md border-2  border-gray-300 text-gray-700 border-l-0 w-[170px] mr-5 px-4 py-1 bg-white focus:outline-blue-300  rounded-r-md"
+              placeholder="นามสกุล"
+            />
+          </div>
+
+          <select className="border-[2px] py-2 w-fit  border-slate-200 mr-4 rounded-md px-2">
+            <option selected>สถานะ</option>
+            <option>อยู่ด้วยกัน</option>
+            <option>แยกกันอยู่</option>
+            <option>เสียชีวิต</option>
+            <option>ไม่ทราบสถานะ</option>
+            <option>อื่นๆ</option>
+          </select>
+        </div>
+        <div className="my-5 lg:flex grid gap-4 ">
+          <div className="flex">
+            <div className="rounded-l-md h-fit  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
+              อาชีพ :{" "}
+            </div>
+            <input
+              type="text"
+              className=" text-md border-2 h-fit  border-gray-300 text-gray-700 border-l-0 w-[170px] mr-5 px-4 py-1 bg-white focus:outline-blue-300  rounded-r-md"
+              placeholder="-"
+            />
+          </div>
+          <div className="flex">
+            <div>ที่อยู่ :</div>
+            <textarea
+              className="border-2 ml-2 w-[350px] focus:outline-blue-400 py-1 border-slate-200 px-3 rounded-md"
+              rows={2}
+              placeholder="บ้านเลขที่..."
+            />
+          </div>
+        </div>
+        <div className="text-xl mt-5">ข้อมูลมารดา</div>
+        <div className="lg:flex grid gap-4 mt-1 mb-5">
+          <div className="flex">
+            <div className="rounded-l-md  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
+              ชื่อ :{" "}
+            </div>
+            <input
+              type="text"
+              className=" text-md border-2  border-gray-300 text-gray-700 border-l-0 w-[170px] mr-5 px-4 py-1 bg-white focus:outline-blue-300  rounded-r-md"
+              placeholder="ชื่อ"
+            />
+          </div>
+          <div className="flex">
+            <div className="rounded-l-md  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
+              นามสกุล :{" "}
+            </div>
+            <input
+              type="text"
+              className=" text-md border-2  border-gray-300 text-gray-700 border-l-0 w-[170px] mr-5 px-4 py-1 bg-white focus:outline-blue-300  rounded-r-md"
+              placeholder="นามสกุล"
+            />
+          </div>
+
+          <select className="border-[2px] py-2 w-fit  border-slate-200 mr-4 rounded-md px-2">
+            <option selected>สถานะ</option>
+            <option>อยู่ด้วยกัน</option>
+            <option>แยกกันอยู่</option>
+            <option>เสียชีวิต</option>
+            <option>ไม่ทราบสถานะ</option>
+            <option>อื่นๆ</option>
+          </select>
+        </div>
+        <div className="my-5 lg:flex grid gap-4 ">
+          <div className="flex">
+            <div className="rounded-l-md h-fit  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
+              อาชีพ :{" "}
+            </div>
+            <input
+              type="text"
+              className=" text-md border-2 h-fit  border-gray-300 text-gray-700 border-l-0 w-[170px] mr-5 px-4 py-1 bg-white focus:outline-blue-300  rounded-r-md"
+              placeholder="-"
+            />
+          </div>
+          <div className="flex">
+            <div>ที่อยู่ :</div>
+            <textarea
+              className="border-2 ml-2 w-[350px] focus:outline-blue-400 py-1 border-slate-200 px-3 rounded-md"
+              rows={2}
+              placeholder="บ้านเลขที่..."
+            />
+          </div>
+        </div>
+      </div>
+      <div className="w-full  grid place-items-center  my-5">
+        <button
+          onClick={handleSubmit}
+          className="rounded-md px-10 py-2 shadow-md shadow-gray-200 bg-green-500 text-white hover:opacity-75"
+        >
+          ส่งใบสมัคร
+        </button>
       </div>
     </div>
   );

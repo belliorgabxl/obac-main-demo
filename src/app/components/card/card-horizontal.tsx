@@ -29,9 +29,9 @@ export default function CardHorizontal({ cardData }: CardHorizontalProps) {
                   src={data.img}
                   alt={data.topic}
                   fill
-                  className="absolute w-12 lg:w-full  object-cover transition group-hover:opacity-80  duration-700"
+                  className="absolute w-12 lg:w-full h-36 lg:h-40  object-cover  group-hover:opacity-80  duration-700"
                 />
-                <div className="relative w-full h-full bg-gradient-to-t from-gray-900/30 to-gray-900/5"></div>
+                <div className="relative w-full h-full bg-gradient-to-t from-gray-900/50 to-gray-900/10"></div>
               </div>
               <div className="grid px-5 w-full">
                 <div className="flex justify-between">
