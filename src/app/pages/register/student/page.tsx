@@ -38,7 +38,7 @@ export default function Home() {
             <option>นางสาว</option>
           </select>
           <div className="flex">
-            <div className="rounded-l-md  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
+            <div className="rounded-l-md line-clamp-1  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
               ชื่อ (ภาษาไทย) :{" "}
             </div>
             <input
@@ -60,7 +60,7 @@ export default function Home() {
         </div>
         <div className=" lg:flex md:flex sm:grid sm:gap-4 md:gap-0  grid gap-4  lg:gap-0">
           <div className="flex">
-            <div className="rounded-l-md  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
+            <div className="rounded-l-md line-clamp-1 text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
               ชื่อ (อังกฤษ) :{" "}
             </div>
             <input
@@ -70,7 +70,7 @@ export default function Home() {
             />
           </div>
           <div className="flex">
-            <div className="rounded-l-md  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
+            <div className="rounded-l-md line-clamp-1 text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
               นามสกุล (อังกฤษ) :{" "}
             </div>
             <input
@@ -82,7 +82,7 @@ export default function Home() {
         </div>
         <div className="lg:flex grid gap-4 my-5">
           <div className="flex">
-            <div className="rounded-l-md  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
+            <div className="rounded-l-md line-clamp-1  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
               บัตรประชาชน :
             </div>
             <input
@@ -162,7 +162,7 @@ export default function Home() {
           />
           ที่อยู่
         </div>
-        <div className="my-5 flex">
+        <div className="my-5 overflow-hidden">
           <div>ที่อยู่ :</div>
           <textarea
             className="border-2 ml-2 w-[350px] focus:outline-blue-400 py-1 border-slate-200 px-3 rounded-md"
@@ -183,7 +183,7 @@ export default function Home() {
         <div className="lg:flex grid gap-4 my-5">
           <div className="flex">
             {" "}
-            <div className="rounded-l-md  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
+            <div className="rounded-l-md line-clamp-1  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
               เบอร์ติดต่อ :{" "}
             </div>
             <input
@@ -204,7 +204,7 @@ export default function Home() {
             />
           </div>
           <div className="flex">
-            <div className="rounded-l-md  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
+            <div className="rounded-l-md line-clamp-1  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
               Facebook :{" "}
             </div>
             <input
@@ -245,7 +245,7 @@ export default function Home() {
             />
           </div>
           <div className="flex">
-            <div className="rounded-l-md  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
+            <div className="rounded-l-md line-clamp-1 text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
               นามสกุล :{" "}
             </div>
             <input
@@ -275,7 +275,7 @@ export default function Home() {
               placeholder="-"
             />
           </div>
-          <div className="flex">
+          <div className="overflow-hidden">
             <div>ที่อยู่ :</div>
             <textarea
               className="border-2 ml-2 w-[350px] focus:outline-blue-400 py-1 border-slate-200 px-3 rounded-md"
@@ -297,7 +297,7 @@ export default function Home() {
             />
           </div>
           <div className="flex">
-            <div className="rounded-l-md  text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
+            <div className="rounded-l-md line-clamp-1 text-gray-700 border-2 border-gray-300 border-r-0 w-fit bg-white py-1 pl-4 pr-1">
               นามสกุล :{" "}
             </div>
             <input
@@ -327,7 +327,7 @@ export default function Home() {
               placeholder="-"
             />
           </div>
-          <div className="flex">
+          <div className="overflow-hidden">
             <div>ที่อยู่ :</div>
             <textarea
               className="border-2 ml-2 w-[350px] focus:outline-blue-400 py-1 border-slate-200 px-3 rounded-md"
